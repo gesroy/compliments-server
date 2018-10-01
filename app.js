@@ -27,6 +27,28 @@ app.use(
   })
 )
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
+
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+const dbPath = process.env[process.env.SELECTED_DB]
+
+console.log(dbPath)
+mongoose
+  .connect(
+    dbPath,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log(`Connected with ${dbPath}`))
+
 app.use('/users', usersRouter)
 app.use('/compliments', complimentsRouter)
 
