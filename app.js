@@ -7,7 +7,7 @@ var sassMiddleware = require('node-sass-middleware')
 
 var usersRouter = require('./routes/users')
 var complimentsRouter = require('./routes/compliments')
-var complimentstoreviewRouter = require('./routes/complimentstoreview')
+var complimentsToReviewRouter = require('./routes/complimentsToReview')
 
 var app = express()
 
@@ -52,7 +52,7 @@ mongoose
 
 app.use('/users', usersRouter)
 app.use('/compliments', complimentsRouter)
-app.use('/complimentstoreview', complimentstoreviewRouter)
+app.use('/complimentsToReview', complimentsToReviewRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
